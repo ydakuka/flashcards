@@ -1,0 +1,25 @@
+<%= simple_form_for current_user, url: profile_path(current_user),
+                    method: :put do |f| %>
+  <div class="form-group">
+    <%= f.input :locale, priority: I18n.default_locale,
+                collection: I18n.available_locales, include_blank: false,
+                prompt: 'Выберите локаль',
+                label: 'Локаль',
+                input_html: { class: 'form-control', required: true } %>
+  </div>
+  <div class="form-group">
+    <%= f.input :email, as: :email, label: 'E-mail',
+                input_html: { class: 'form-control', required: true,
+                              autofocus: true } %>
+  </div>
+  <div class="form-group">
+    <%= f.input :password, as: :password, label: 'Пароль',
+                input_html: { class: 'form-control', required: true } %>
+  </div>
+  <div class="form-group">
+    <%= f.input :password_confirmation, as: :password,
+                label: 'Подтверждение пароля',
+                input_html: { class: 'form-control', required: true } %>
+  </div>
+  <%= f.button :submit, 'Сохранить', class: 'btn btn-default' %>
+<% end %>

@@ -1,0 +1,22 @@
+<table class="table table-hover table-condensed">
+  <thead>
+  <tr>
+    <th>Оригинал</th>
+    <th>Перевод</th>
+    <th>Пересмотр</th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @cards.each do |card| %>
+    <tr class="table table-hover table-condensed">
+      <td><%= card.original_text %></td>
+      <td><%= card.translated_text %></td>
+      <td><%= card.review_date.strftime('%d.%m.%Y %H:%M:%S') %></td>
+      <td><%= link_to 'Редактировать', edit_card_path(card) %></td>
+      <td><%= link_to 'Удалить', card, method: :delete,
+                      data: { confirm: 'Удалить запись?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

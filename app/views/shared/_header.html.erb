@@ -1,0 +1,47 @@
+<div class="row" id="header">
+  <div class="col-sm-12">
+    <nav class="navbar navbar-default" id="header">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <% if current_user %>
+            <%= link_to t(:flashcards_label), trainer_path, class: "navbar-brand" %>
+          <% else %>
+            <%= link_to t(:flashcards_label), root_path, class: "navbar-brand" %>
+          <% end %>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <% if current_user %>
+            <ul class="nav navbar-nav navbar-left">
+              <li><%= link_to t(:all_decks_label), blocks_path %></li>
+              <li><%= link_to t(:add_deck_label), new_block_path %></li>
+              <li><%= link_to t(:all_cards_label), cards_path %></li>
+              <li><%= link_to t(:add_card_label), new_card_path %></li>
+            </ul>
+          <% end %>
+          <p class="navbar-text navbar-right">
+            <% if current_user %>
+              <%= link_to t(:user_profile_label), edit_profile_path(current_user),
+                          class: 'navbar-link' %> |
+              <%= link_to t(:delete_user_label), user_path(current_user),
+                          method: :delete, class: 'navbar-link',
+                          data: { confirm: 'Удалить пользователя?' } %> |
+              <%= link_to t(:log_out_label), :logout, method: :post,
+                          class: 'navbar-link' %>
+            <% else %>
+              <%= link_to t(:sing_up_label), new_user_path,
+                          class: 'navbar-link' %> |
+              <%= link_to t(:log_in_with_github_label),
+                          auth_at_provider_path(provider: :github),
+                          class: 'navbar-link'%> |
+              <%= link_to t(:log_in_label), :login, class: 'navbar-link' %> |
+              <% I18n.available_locales.each do |locale| %>
+                <%=link_to locale, root_path(user_locale: locale),
+                           class: 'navbar-link'%>
+              <% end %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>

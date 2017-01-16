@@ -1,0 +1,9 @@
+<%= simple_form_for block do |f| %>
+  <div class="form-group">
+    <%= f.input :title, label: 'Название',
+                input_html: { class: 'form-control', required: true,
+                              autofocus: true } %>
+  </div>
+
+  <%= f.button :submit, 'Сохранить', class: 'btn btn-default' %>
+<% end %>

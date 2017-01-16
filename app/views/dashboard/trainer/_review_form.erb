@@ -1,0 +1,34 @@
+<% if card %>
+  <h2><%= t(:current_card_label) %></h2>
+
+  <%= form_tag review_card_path(card_id: card.id), method: :put, remote: true do %>
+
+    <% if card.image? %>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-xs-3 col-md-2 card_image">
+            <p class="thumbnail">
+              <%= image_tag card.image_url %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= label_tag '', t(:original_text_label) %>
+      <%= text_area_tag '', card.original_text, class: 'form-control',
+                        disabled: true %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag '', t(:translated_text_label) %>
+      <%= text_area_tag :user_translation, nil, class: 'form-control',
+                        required: true, autofocus: true %>
+    </div>
+
+    <%= submit_tag t(:check_card_button), class: 'btn btn-default' %>
+  <% end %>
+<% else %>
+  <p class="lead"><%= t(:no_review_card_text) %></p>
+<% end %>

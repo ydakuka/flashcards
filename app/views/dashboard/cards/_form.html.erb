@@ -1,0 +1,38 @@
+<%= simple_form_for card do |f| %>
+  <div class="form-group">
+    <%= f.input :original_text,  as: :text, label: 'Оригинал',
+                input_html: { class: 'form-control', required: true,
+                              autofocus: true } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :translated_text,  as: :text, label: 'Перевод',
+                input_html: { class: 'form-control', required: true } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :image, as: :file, label: 'Изображение' %>
+    <%= f.input :image_cache, as: :hidden %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :block_id, collection: current_user.blocks.all.order('title'),
+                      prompt: 'Выберите колоду', label: 'Колоды',
+                      input_html: { class: 'form-control', required: true } %>
+  </div>
+
+  <% if card.image? %>
+    <div class="form-group">
+      <%= f.input :remove_image, as: :boolean, label: 'Удалить изображение' %>
+      <div class="row">
+        <div class="col-xs-6 col-md-4 card_image">
+          <p class="thumbnail">
+            <%= image_tag card.image_url %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <%= f.button :submit, 'Сохранить', class: 'btn btn-default' %>
+<% end %>

@@ -1,0 +1,17 @@
+<%= simple_form_for user do |f| %>
+  <div class="form-group">
+    <%= f.input :email, as: :email, label: t(:email_label),
+                input_html: { class: 'form-control', required: true,
+                              autofocus: true } %>
+  </div>
+  <div class="form-group">
+    <%= f.input :password, as: :password, label: t(:password_label),
+                input_html: { class: 'form-control', required: true } %>
+  </div>
+  <div class="form-group">
+    <%= f.input :password_confirmation, as: :password,
+                label: t(:password_confirmation_label),
+                input_html: { class: 'form-control', required: true } %>
+  </div>
+  <%= f.button :submit, t(:sing_up_label), class: 'btn btn-default' %>
+<% end %>

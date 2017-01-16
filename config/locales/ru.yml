@@ -1,0 +1,47 @@
+ru:
+  welcome: 'Добро пожаловать.'
+  original_text_label: 'Оригинал'
+  translated_text_label: 'Перевод'
+  current_card_label: 'Текущая карточка'
+  check_card_button: 'Проверить'
+  no_review_card_text: 'Вы изучили все доступные карточки.
+      Ожидайте наступления даты пересмотра.'
+  registration_label: 'Регистрация'
+  email_label: 'E-mail'
+  password_label: 'Пароль'
+  password_confirmation_label: 'Подтверждение пароля'
+  sing_up_label: 'Зарегистрироваться'
+  sing_in_label: 'Вход'
+  log_in_label: 'Войти'
+  all_decks_label: 'Все колоды'
+  add_deck_label: 'Добавить колоду'
+  all_cards_label: 'Все карточки'
+  add_card_label: 'Добавить карточку'
+  user_profile_label: 'Профиль пользователя'
+  delete_user_label: 'Удалить пользователя'
+  log_out_label: 'Выйти'
+  user_created_successfully_notice: 'Пользователь успешно создан.'
+  please_log_in_alert: 'Пожалуйста авторизуйтесь.'
+  not_found_alert: 'Вы обратились к несуществующей записи.'
+  log_in_is_successful_notice: 'Вход выполнен успешно.'
+  not_logged_in_alert: 'Вход не выполнен. Проверте вводимые E-mail и Пароль.'
+  flashcards_label: 'Флэшкарточкер'
+  log_in_with_github_label: 'Войти через Github'
+  correct_translation_notice: 'Вы ввели верный перевод. Продолжайте.'
+  incorrect_translation_alert: 'Вы ввели не верный перевод. Повторите попытку.'
+  translation_from_misprint_alert: "Вы ввели перевод c опечаткой.
+      Ваш вариант: %{user_translation} / Оригинал: %{original_text} /
+      Перевод: %{translated_text}. Продолжайте."
+  log_in_is_successful_provider_notice: "Вход из аккаунта %{provider} выполнен успешно."
+  log_out_is_successful_notice: 'Выход выполнен успешно.'
+  log_out_failed_provider_alert: "Вход из аккаунта %{provider.titleize} не выполнен ."
+  please_log_in: 'Пожалуйста авторизуйтесь.'
+
+  activerecord:
+    errors:
+      messages:
+        blank: 'Заполните поле.'
+        too_short: 'Короткое значение.'
+        confirmation: 'Значения не совпадают.'
+        taken: 'Не уникальное значение.'
+        invalid: 'Не верный формат.'
