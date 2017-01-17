@@ -8,7 +8,7 @@ class Dashboard::ProfileController < Dashboard::BaseController
       redirect_to edit_profile_path,
                   notice: 'Профиль пользователя успешно обновлен.'
     else
-      respond_with current_user
+      render :edit
     end
   end
 

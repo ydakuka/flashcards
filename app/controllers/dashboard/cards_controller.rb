@@ -17,7 +17,7 @@ class Dashboard::CardsController < Dashboard::BaseController
     if @card.save
       redirect_to cards_path
     else
-      respond_with @card
+      render :new
     end
   end
 
@@ -25,13 +25,13 @@ class Dashboard::CardsController < Dashboard::BaseController
     if @card.update(card_params)
       redirect_to cards_path
     else
-      respond_with @card
+      render :edit
     end
   end
 
   def destroy
     @card.destroy
-    respond_with @card
+    redirect_to cards_url, notice: 'Card was successfully destroyed.'
   end
 
   private
