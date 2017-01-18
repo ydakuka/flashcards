@@ -1,6 +1,6 @@
 require 'super_memo'
 
-class Card < ActiveRecord::Base
+class Card < ApplicationRecord
   belongs_to :user
   belongs_to :block
   validates :user_id, presence: true

@@ -2,17 +2,16 @@ source 'https://rubygems.org'
 
 ruby '2.3.3'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.7'
-# Use postgresql as the database for Active Record
+gem 'rails', '>= 5.0.1', '< 5.1'
 gem 'pg'
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
-
+gem 'coffee-rails', '~> 4.2'
+gem 'jbuilder', '~> 2.5'
+gem 'sdoc', '~> 0.4.2',          group: :doc
+gem 'puma', '~> 3.0'
+gem 'turbolinks', '~> 5.0'
 gem 'jquery-rails'
-gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'rake'
 gem 'simple_form'
@@ -32,8 +31,24 @@ gem 'routing-filter'
 gem 'rollbar'
 gem 'newrelic_rpm'
 
-group :development, :test do
-  gem 'rspec-rails'
-  gem 'capybara'
-  gem 'factory_girl_rails'
+gem 'slim'
+
+group :development do
+  gem 'html2slim'
+  gem 'binding_of_caller'
+  gem 'better_errors'
 end
+
+group :development, :test do
+  gem 'capybara', '~> 2.11'
+  gem 'launchy'
+  gem 'factory_girl_rails'
+  gem 'byebug', platform: :mri
+  gem 'pry-rails'
+
+  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+    gem lib, :git => "https://github.com/rspec/#{lib}.git", :branch => 'master'
+  end
+end
+
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
