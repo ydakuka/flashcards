@@ -30,13 +30,20 @@ gem 'http_accept_language'
 gem 'routing-filter'
 gem 'rollbar'
 gem 'newrelic_rpm'
-
 gem 'slim'
+gem 'rainbow', '>= 2.1.0', '< 2.2.0'
+gem 'rubocop', '~> 0.47.1', require: false
+gem 'rubocop-rspec'
 
 group :development do
   gem 'html2slim'
   gem 'binding_of_caller'
   gem 'better_errors'
+end
+
+group :test do
+  gem "simplecov"
+  gem "codeclimate-test-reporter", "~> 1.0.0"
 end
 
 group :development, :test do
