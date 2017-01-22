@@ -1,6 +1,5 @@
 class Dashboard::BlocksController < Dashboard::BaseController
-  before_action :set_block, only: [:destroy, :edit, :update, :set_as_current,
-                                   :reset_as_current]
+  before_action :set_block, only: [:destroy, :edit, :update, :set_as_current, :reset_as_current]
 
   def index
     @blocks = current_user.blocks.all.order('title')
