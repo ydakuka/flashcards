@@ -29,21 +29,18 @@ gem 'whenever', require: false
 gem 'http_accept_language'
 gem 'routing-filter'
 gem 'rollbar'
-gem 'newrelic_rpm'
-gem 'slim'
 gem 'rainbow', '>= 2.1.0', '< 2.2.0'
-gem 'rubocop', '~> 0.47.1', require: false
-gem 'rubocop-rspec'
 
 group :development do
-  gem 'html2slim'
   gem 'binding_of_caller'
   gem 'better_errors'
+  gem 'brakeman', :require => false
+  gem 'rubocop', '~> 0.47.1', require: false
+  gem 'rubocop-rspec'
 end
 
 group :test do
   gem "simplecov"
-  gem "codeclimate-test-reporter", "~> 1.0.0"
 end
 
 group :development, :test do
@@ -52,10 +49,16 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'byebug', platform: :mri
   gem 'pry-rails'
+  gem "codeclimate-test-reporter", "~> 1.0.0"
 
   %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
-    gem lib, :git => "https://github.com/rspec/#{lib}.git", :branch => 'master'
+    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'master'
   end
+end
+
+group :production do
+  gem 'unicorn'
+  gem 'newrelic_rpm'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

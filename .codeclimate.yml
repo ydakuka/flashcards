@@ -1,11 +1,14 @@
+---
 engines:
-  rubocop:
+  brakeman:
     enabled: true
-  golint:
+  bundler-audit:
+    enabled: true
+  rubocop:
     enabled: true
   eslint:
     enabled: true
-  csslint:
+  coffeelint:
     enabled: true
   duplication:
     enabled: true
@@ -15,13 +18,28 @@ engines:
       - javascript
   markdownlint:
     enabled: true
+  fixme:
+    enabled: true
+  rubocop:
+    enabled: true
+    checks:
+      Rubocop/Lint/HandleExceptions:
+        enabled: false
 ratings:
   paths:
+  - Gemfile.lock
   - app/**
   - lib/**
+  - "**.erb"
   - "**.rb"
-  - "**.go"
+  - "**.slim"
+  - "**.css"
+  - "**.coffee"
+  - "**.js"
   - "**.md"
+  - "**.module"
 exclude_paths:
-- spec/**/*
-- "**/vendor/**/*"
+  - spec/**/*
+  - "**/vendor/**/*"
+  - config/
+  - db/
