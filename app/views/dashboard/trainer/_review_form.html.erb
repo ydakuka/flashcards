@@ -2,18 +2,7 @@
   <h2><%= t(:current_card_label) %></h2>
 
   <%= form_tag review_card_path(card_id: card.id), method: :put, remote: true do %>
-
-    <% if card.image? %>
-      <div class="form-group">
-        <div class="row">
-          <div class="col-xs-3 col-md-2 card_image">
-            <p class="thumbnail">
-              <%= image_tag card.image_url %>
-            </p>
-          </div>
-        </div>
-      </div>
-    <% end %>
+    <%= render partial: "shared/card_image", locals: { class_column: "col-xs-3 col-md-2", card: card } %>
 
     <div class="form-group">
       <%= label_tag '', t(:original_text_label) %>

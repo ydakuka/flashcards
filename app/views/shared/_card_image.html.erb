@@ -1,0 +1,12 @@
+<% if card.image? %>
+  <div class="form-group">
+    <%= f.input :remove_image, as: :boolean, label: 'Удалить изображение' if params[:controller] == "cards" %>
+    <div class="row">
+      <div class="#{class_column} card_image">
+        <p class="thumbnail">
+          <%= image_tag card.image_url %>
+        </p>
+      </div>
+    </div>
+  </div>
+<% end %>
