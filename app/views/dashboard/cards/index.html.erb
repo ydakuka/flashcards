@@ -9,6 +9,7 @@
   </thead>
   <tbody>
   <% @cards.each do |card| %>
+    <% cache card do %>
     <tr class="table table-hover table-condensed">
       <td><%= card.original_text %></td>
       <td><%= card.translated_text %></td>
@@ -17,6 +18,7 @@
       <td><%= link_to 'Удалить', card, method: :delete,
                       data: { confirm: 'Удалить запись?' } %></td>
     </tr>
+    <% end %>
   <% end %>
   </tbody>
 </table>
