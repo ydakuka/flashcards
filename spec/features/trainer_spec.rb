@@ -7,11 +7,11 @@ describe 'review cards without blocks' do
     before do
       create(:user)
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login('test@test.com', '12345', I18n.t('log_in_label'))
     end
 
     it 'no cards' do
-      expect(page).to have_content 'Ожидайте наступления даты пересмотра.'
+      expect(page).to have_content I18n.t('no_review_card_text')
     end
   end
 end
@@ -21,11 +21,11 @@ describe 'review cards with one block' do
     before do
       create(:user_with_one_block_without_cards)
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login('test@test.com', '12345', I18n.t('log_in_label'))
     end
 
     it 'no cards' do
-      expect(page).to have_content 'Ожидайте наступления даты пересмотра.'
+      expect(page).to have_content I18n.t('no_review_card_text')
     end
   end
 
@@ -35,37 +35,37 @@ describe 'review cards with one block' do
       user.cards.each { |card| card.update_attribute(:review_date,
                                                      Time.now - 3.days) }
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login('test@test.com', '12345', I18n.t('log_in_label'))
     end
 
     it 'first visit' do
-      expect(page).to have_content 'Оригинал'
+      expect(page).to have_content I18n.t('original_text_label')
     end
 
     it 'incorrect translation' do
       fill_in 'user_translation', with: 'RoR'
-      click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('incorrect_translation_alert')
+
     end
 
     it 'correct translation' do
       fill_in 'user_translation', with: 'house'
-      click_button 'Проверить'
-      expect(page).to have_content 'Вы ввели верный перевод. Продолжайте.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('correct_translation_notice')
     end
 
     it 'correct translation distance=1' do
       fill_in 'user_translation', with: 'hous'
-      click_button 'Проверить'
-      expect(page).to have_content 'Вы ввели перевод c опечаткой.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('translation_from_misprint_alert',
+       {user_translation: 'hous', original_text: 'дом', translated_text: 'house'});
     end
 
     it 'incorrect translation distance=2' do
       fill_in 'user_translation', with: 'hou'
-      click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('incorrect_translation_alert')
     end
   end
 
@@ -75,55 +75,54 @@ describe 'review cards with one block' do
       user.cards.each { |card| card.update_attribute(:review_date,
                                                      Time.now - 3.days) }
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login('test@test.com', '12345', I18n.t('log_in_label'))
     end
 
     it 'incorrect translation' do
       fill_in 'user_translation', with: 'RoR'
-      click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('incorrect_translation_alert')
     end
 
     it 'correct translation' do
       fill_in 'user_translation', with: 'house'
-      click_button 'Проверить'
-      expect(page).to have_content 'Ожидайте наступления даты пересмотра.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('no_review_card_text')
     end
 
     it 'incorrect translation distance=2' do
       fill_in 'user_translation', with: 'hou'
-      click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('incorrect_translation_alert')
     end
 
     it 'correct translation distance=1' do
       fill_in 'user_translation', with: 'hous'
-      click_button 'Проверить'
-      expect(page).to have_content 'Вы ввели перевод c опечаткой.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('translation_from_misprint_alert',
+       {user_translation: 'hous', original_text: 'дом', translated_text: 'house'});
     end
 
     it 'correct translation quality=3' do
       fill_in 'user_translation', with: 'RoR'
-      click_button 'Проверить'
+      click_button I18n.t('check_card_button')
       fill_in 'user_translation', with: 'RoR'
-      click_button 'Проверить'
+      click_button I18n.t('check_card_button')
       fill_in 'user_translation', with: 'House'
-      click_button 'Проверить'
-      expect(page).to have_content 'Текущая карточка'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('current_card_label')
     end
 
     it 'correct translation quality=4' do
       fill_in 'user_translation', with: 'RoR'
-      click_button 'Проверить'
+      click_button I18n.t('check_card_button')
       fill_in 'user_translation', with: 'RoR'
-      click_button 'Проверить'
+      click_button I18n.t('check_card_button')
       fill_in 'user_translation', with: 'House'
-      click_button 'Проверить'
+      click_button I18n.t('check_card_button')
       fill_in 'user_translation', with: 'House'
-      click_button 'Проверить'
-      expect(page).to have_content 'Ожидайте наступления даты пересмотра.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('no_review_card_text')
     end
   end
 end
@@ -133,11 +132,11 @@ describe 'review cards with two blocks' do
     before do
       create(:user_with_two_blocks_without_cards)
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login('test@test.com', '12345', I18n.t('log_in_label'))
     end
 
     it 'no cards' do
-      expect(page).to have_content 'Ожидайте наступления даты пересмотра.'
+      expect(page).to have_content I18n.t('no_review_card_text')
     end
   end
 
@@ -147,37 +146,36 @@ describe 'review cards with two blocks' do
       user.cards.each { |card| card.update_attribute(:review_date,
                                                      Time.now - 3.days) }
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login('test@test.com', '12345', I18n.t('log_in_label'))
     end
 
     it 'first visit' do
-      expect(page).to have_content 'Оригинал'
+      expect(page).to have_content I18n.t('original_text_label')
     end
 
     it 'incorrect translation' do
       fill_in 'user_translation', with: 'RoR'
-      click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('incorrect_translation_alert')
     end
 
     it 'correct translation' do
       fill_in 'user_translation', with: 'house'
-      click_button 'Проверить'
-      expect(page).to have_content 'Вы ввели верный перевод. Продолжайте.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('correct_translation_notice')
     end
 
     it 'incorrect translation distance=2' do
       fill_in 'user_translation', with: 'hou'
-      click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('incorrect_translation_alert')
     end
 
     it 'correct translation distance=1' do
       fill_in 'user_translation', with: 'hous'
-      click_button 'Проверить'
-      expect(page).to have_content 'Вы ввели перевод c опечаткой.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('translation_from_misprint_alert',
+       {user_translation: 'hous', original_text: 'дом', translated_text: 'house'});
     end
   end
 
@@ -187,33 +185,32 @@ describe 'review cards with two blocks' do
       user.cards.each { |card| card.update_attribute(:review_date,
                                                      Time.now - 3.days) }
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login('test@test.com', '12345', I18n.t('log_in_label'))
     end
 
     it 'incorrect translation' do
       fill_in 'user_translation', with: 'RoR'
-      click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('incorrect_translation_alert')
     end
 
     it 'correct translation' do
       fill_in 'user_translation', with: 'house'
-      click_button 'Проверить'
-      expect(page).to have_content 'Ожидайте наступления даты пересмотра.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('no_review_card_text')
     end
 
     it 'incorrect translation distance=2' do
       fill_in 'user_translation', with: 'hou'
-      click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('incorrect_translation_alert')
     end
 
     it 'correct translation distance=1' do
       fill_in 'user_translation', with: 'hous'
-      click_button 'Проверить'
-      expect(page).to have_content 'Вы ввели перевод c опечаткой.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('translation_from_misprint_alert',
+       {user_translation: 'hous', original_text: 'дом', translated_text: 'house'});
     end
   end
 end
@@ -223,11 +220,11 @@ describe 'review cards with current_block' do
     before do
       create(:user_with_two_blocks_without_cards, current_block_id: 1)
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login('test@test.com', '12345', I18n.t('log_in_label'))
     end
 
     it 'no cards' do
-      expect(page).to have_content 'Ожидайте наступления даты пересмотра.'
+      expect(page).to have_content I18n.t('no_review_card_text')
     end
   end
 
@@ -239,37 +236,36 @@ describe 'review cards with current_block' do
       card = user.cards.find_by(block_id: block.id)
       card.update_attribute(:review_date, Time.now - 3.days)
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login('test@test.com', '12345', I18n.t('log_in_label'))
     end
 
     it 'first visit' do
-      expect(page).to have_content 'Оригинал'
+      expect(page).to have_content I18n.t('original_text_label')
     end
 
     it 'incorrect translation' do
       fill_in 'user_translation', with: 'RoR'
-      click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('incorrect_translation_alert')
     end
 
     it 'correct translation' do
       fill_in 'user_translation', with: 'house'
-      click_button 'Проверить'
-      expect(page).to have_content 'Вы ввели верный перевод. Продолжайте.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('correct_translation_notice')
     end
 
     it 'incorrect translation distance=2' do
       fill_in 'user_translation', with: 'hou'
-      click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('incorrect_translation_alert')
     end
 
     it 'correct translation distance=1' do
       fill_in 'user_translation', with: 'hous'
-      click_button 'Проверить'
-      expect(page).to have_content 'Вы ввели перевод c опечаткой.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('translation_from_misprint_alert',
+       {user_translation: 'hous', original_text: 'дом', translated_text: 'house'});
     end
   end
 
@@ -281,33 +277,31 @@ describe 'review cards with current_block' do
       card = user.cards.find_by(block_id: block.id)
       card.update_attribute(:review_date, Time.now - 3.days)
       visit trainer_path
-      login('test@test.com', '12345', 'Войти')
+      login('test@test.com', '12345', I18n.t('log_in_label'))
     end
 
     it 'incorrect translation' do
       fill_in 'user_translation', with: 'RoR'
-      click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('incorrect_translation_alert')
     end
 
     it 'correct translation' do
       fill_in 'user_translation', with: 'house'
-      click_button 'Проверить'
-      expect(page).to have_content 'Ожидайте наступления даты пересмотра.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('no_review_card_text')
     end
 
     it 'incorrect translation distance=2' do
       fill_in 'user_translation', with: 'hou'
-      click_button 'Проверить'
-      expect(page).
-          to have_content 'Вы ввели не верный перевод. Повторите попытку.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('incorrect_translation_alert')
     end
 
     it 'correct translation distance=1' do
       fill_in 'user_translation', with: 'hous'
-      click_button 'Проверить'
-      expect(page).to have_content 'Ожидайте наступления даты пересмотра.'
+      click_button I18n.t('check_card_button')
+      expect(page).to have_content I18n.t('no_review_card_text')
     end
   end
 end

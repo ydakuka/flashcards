@@ -1,0 +1,10 @@
+<%= link_to t(:sing_up_label), new_user_path,
+            class: 'navbar-link' %> |
+<%= link_to t(:log_in_with_github_label),
+            auth_at_provider_path(provider: :github),
+            class: 'navbar-link'%> |
+<%= link_to t(:log_in_label), :login, class: 'navbar-link' %> |
+<% I18n.available_locales.each do |locale| %>
+  <%=link_to locale, root_path(user_locale: locale),
+             class: 'navbar-link'%>
+<% end %>

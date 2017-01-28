@@ -6,6 +6,7 @@ describe 'password authentication' do
   describe 'register' do
     before do
       visit root_path
+      click_link 'ru'
     end
 
     it 'register TRUE' do
@@ -78,28 +79,25 @@ describe 'password authentication' do
   describe 'change language' do
     before do
       visit root_path
+      click_link 'en'
     end
 
     it 'home page' do
-      click_link 'en'
-      expect(page).to have_content 'Welcome.'
+      expect(page).to have_content 'Welcome'
     end
 
     it 'register TRUE' do
-      click_link 'en'
       register('test@test.com', '12345', '12345', 'Sing up')
       expect(page).to have_content 'User created successfully.'
     end
 
     it 'default locale' do
-      click_link 'en'
       register('test@test.com', '12345', '12345', 'Sing up')
       user = User.find_by_email('test@test.com')
       expect(user.locale).to eq('en')
     end
 
     it 'available locale' do
-      click_link 'en'
       register('test@test.com', '12345', '12345', 'Sing up')
       click_link 'User profile'
       fill_in 'user[password]', with: '12345'
@@ -110,7 +108,6 @@ describe 'password authentication' do
 
     it 'authentication TRUE' do
       create(:user)
-      click_link 'en'
       login('test@test.com', '12345', 'Log in')
       expect(page).to have_content 'Login is successful.'
     end

@@ -1,11 +1,10 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   has_many :cards, dependent: :destroy
   has_many :blocks, dependent: :destroy
-  has_many :authentications, dependent: :destroy
   belongs_to :current_block, class_name: 'Block'
   before_create :set_default_locale
   before_validation :set_default_locale, on: :create
-
+  has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
 
   authenticates_with_sorcery! do |config|
@@ -20,6 +19,7 @@ class User < ActiveRecord::Base
   validates :locale, presence: true,
             inclusion: { in: I18n.available_locales.map(&:to_s),
                          message: 'Выберите локаль из выпадающего списка.' }
+
 
   def has_linked_github?
     authentications.where(provider: 'github').present?

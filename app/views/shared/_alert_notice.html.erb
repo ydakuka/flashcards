@@ -1,18 +1,7 @@
-<% if flash[:alert] || flash[:notice]%>
-  <div class="col-sm-12">
-    <% if flash[:notice]%>
-      <div class="alert alert-info alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span></button>
-        <p id="alert"><%= flash[:notice] %></p>
-      </div>
-    <% end %>
-    <% if flash[:alert]%>
-      <div class="alert alert-warning alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span></button>
-        <p id="alert"><%= flash[:alert] %></p>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+<%= alert_message = (flash[:alert] || flash[:notice]) %>
+<div class="col-sm-12">
+  <% case alert_message
+     when "flash[:notice]" %><%= render partial: "shared/flash_call", locals: { alert_message: "alert-info" } %>
+  <% when "flash[:alert]" %><%= render partial: "shared/flash_call", locals: { alert_message: "alert-warning" } %>
+  <% end %>
+</div>

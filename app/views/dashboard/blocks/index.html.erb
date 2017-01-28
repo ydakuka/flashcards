@@ -7,24 +7,15 @@
   </thead>
   <tbody>
   <% @blocks.each do |block| %>
-    <tr class="table table-hover table-condensed">
-      <td><%= block.title %></td>
-
-      <% if block.current? %>
-        <td>
-          <%= link_to 'Сделать обычной', reset_as_current_block_path(block),
-                      method: :put %>
-        </td>
-      <% else %>
-        <td>
-          <%= link_to 'Сделать текущей', set_as_current_block_path(block),
-                      method: :put %>
-        </td>
-      <% end %>
-      <td><%= link_to 'Редактировать', edit_block_path(block) %></td>
-      <td><%= link_to 'Удалить', block, method: :delete,
-                      data: { confirm: 'Удалить колоду?' } %></td>
-    </tr>
+    <% cache block do %>
+      <tr class="table table-hover table-condensed">
+        <td><%= block.title %></td>
+        <td><%= check_current_block(block) %></td>
+        <td><%= link_to 'Редактировать', edit_block_path(block) %></td>
+        <td><%= link_to 'Удалить', block, method: :delete,
+                        data: { confirm: 'Удалить колоду?' } %></td>
+      </tr>
+    <% end %>
   <% end %>
   </tbody>
 </table>

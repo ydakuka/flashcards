@@ -1,4 +1,4 @@
-class Authentication < ActiveRecord::Base
-  belongs_to :user
-  validates :user_id, :provider, :uid, presence: true
+class Authentication < ApplicationRecord
+  include Userable
+  validates :provider, :uid, presence: true
 end

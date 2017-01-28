@@ -1,6 +1,5 @@
 class Dashboard::BlocksController < Dashboard::BaseController
-  before_action :set_block, only: [:destroy, :edit, :update, :set_as_current,
-                                   :reset_as_current]
+  before_action :set_block, only: [:destroy, :edit, :update, :set_as_current, :reset_as_current]
 
   def index
     @blocks = current_user.blocks.all.order('title')
@@ -18,7 +17,7 @@ class Dashboard::BlocksController < Dashboard::BaseController
     if @block.save
       redirect_to blocks_path
     else
-      respond_with @block
+      render :new
     end
   end
 
@@ -26,13 +25,13 @@ class Dashboard::BlocksController < Dashboard::BaseController
     if @block.update(block_params)
       redirect_to blocks_path
     else
-      respond_with @block
+      render :edit
     end
   end
 
   def destroy
     @block.destroy
-    respond_with @block
+    redirect_to blocks_url, notice: 'Block was successfully destroyed.'
   end
 
   def set_as_current

@@ -1,18 +1,17 @@
 source 'https://rubygems.org'
 
-ruby '2.1.4'
+ruby '2.3.3'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
-# Use postgresql as the database for Active Record
+gem 'rails', '>= 5.0.1', '< 5.1'
 gem 'pg'
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
-
+gem 'coffee-rails', '~> 4.2'
+gem 'jbuilder', '~> 2.5'
+gem 'sdoc', '~> 0.4.2',          group: :doc
+gem 'puma', '~> 3.0'
+gem 'turbolinks', '~> 5.0'
 gem 'jquery-rails'
-gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'rake'
 gem 'simple_form'
@@ -30,10 +29,36 @@ gem 'whenever', require: false
 gem 'http_accept_language'
 gem 'routing-filter'
 gem 'rollbar'
-gem 'newrelic_rpm'
+gem 'rainbow', '>= 2.1.0', '< 2.2.0'
+
+group :development do
+  gem 'binding_of_caller'
+  gem 'better_errors'
+  gem 'brakeman', :require => false
+  gem 'rubocop', '~> 0.47.1', require: false
+  gem 'rubocop-rspec'
+end
+
+group :test do
+  gem "simplecov"
+end
 
 group :development, :test do
-  gem 'rspec-rails'
-  gem 'capybara'
+  gem 'capybara', '~> 2.11'
+  gem 'launchy'
   gem 'factory_girl_rails'
+  gem 'byebug', platform: :mri
+  gem 'pry-rails'
+  gem "codeclimate-test-reporter", "~> 1.0.0"
+
+  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'master'
+  end
 end
+
+group :production do
+  gem 'unicorn'
+  gem 'newrelic_rpm'
+end
+
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

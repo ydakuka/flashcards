@@ -1,0 +1,37 @@
+AllCops:
+  Include:
+    - '**/*.gemspec'
+    - '**/*.rake'
+    - '**/Gemfile'
+    - '**/Rakefile'
+  RunRailsCops: false
+  DisplayCopNames: false
+  StyleGuideCopsOnly: false
+
+Style/AccessModifierIndentation:
+  EnforcedStyle: outdent
+
+Style/BracesAroundHashParameters:
+  EnforcedStyle: no_braces
+
+Style/DotPosition:
+  EnforcedStyle: leading
+
+Style/IndentHash:
+  EnforcedStyle: consistent
+
+Style/LineLength:
+  Max: 120
+
+Style/SpaceAroundEqualsInParameterDefault:
+  EnforcedStyle: no_space
+
+Style/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: space
+  EnforcedStyleForEmptyBraces: no_space
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: single_quotes
