@@ -17,3 +17,10 @@ config/database.yml
 config/application.yml
 public/uploads/
 /coverage
+/cookbooks/
+/tmp/librarian/
+/.vagrant
+/engines/
+/vendor
+/.bundle
+/nodes/*.json

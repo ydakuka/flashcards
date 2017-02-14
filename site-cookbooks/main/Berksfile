@@ -21,3 +21,9 @@ cookbook 'runit'
 cookbook 'ssh_known_hosts'
 cookbook 'user'
 cookbook 'vim'
+cookbook 'ruby_rbenv'
+cookbook 'poise-ruby'
+
+cookbook 'ohai' # needed for setting up the ohai plugin
+# cookbook' compat_resource' # needed for Chef 12.1 - 12.13
+cookbook 'yum-epel' # needed for setting up the EPEL repository on RHEL platforms
