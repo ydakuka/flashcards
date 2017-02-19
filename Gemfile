@@ -30,6 +30,8 @@ gem 'http_accept_language'
 gem 'routing-filter'
 gem 'rollbar'
 gem 'rainbow', '>= 2.1.0', '< 2.2.0'
+gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
+gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
 
 group :development do
   gem 'binding_of_caller'

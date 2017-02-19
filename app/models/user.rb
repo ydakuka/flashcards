@@ -36,6 +36,6 @@ class User < ApplicationRecord
   private
 
   def set_default_locale
-    self.locale = I18n.locale.to_s
+    self.locale ||= I18n.locale.to_s
   end
 end
