@@ -1,6 +1,9 @@
 ActiveAdmin.register User do
   permit_params :email, :password, :password_confirmation, :locale
 
+  scope :all
+  scope :admin_user
+
   filter :cards, as: :select, collection: proc { Card.pluck(:original_text, :id) }
   filter :blocks
   filter :current_block

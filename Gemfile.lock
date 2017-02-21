@@ -307,6 +307,7 @@ GEM
     rdoc (4.3.0)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
+    rolify (5.1.0)
     rollbar (2.14.0)
       multi_json
     routing-filter (0.6.0)
@@ -407,6 +408,7 @@ DEPENDENCIES
   rails_12factor
   rainbow (>= 2.1.0, < 2.2.0)
   rake
+  rolify
   rollbar
   routing-filter
   rspec-core!
