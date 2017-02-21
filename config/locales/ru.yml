@@ -36,6 +36,8 @@ ru:
   log_out_is_successful_notice: 'Выход выполнен успешно.'
   log_out_failed_provider_alert: "Вход из аккаунта %{provider.titleize} не выполнен ."
   please_log_in: 'Пожалуйста авторизуйтесь.'
+  not_authorized_alert: 'Вы не авторизованы для выполнения этого действия.'
+  not_authorized_raise: 'У Вас не хватает прав для выполнения этого действие.'
 
   activerecord:
     errors:
@@ -45,3 +47,7 @@ ru:
         confirmation: 'Значения не совпадают.'
         taken: 'Не уникальное значение.'
         invalid: 'Не верный формат.'
+
+  time:
+    formats:
+      long: "%Y-%m-%d %H:%M:%S"

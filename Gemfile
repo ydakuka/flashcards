@@ -33,6 +33,7 @@ gem 'rainbow', '>= 2.1.0', '< 2.2.0'
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
 gem 'rolify'
+gem 'pundit'
 
 group :development do
   gem 'binding_of_caller'
@@ -44,6 +45,7 @@ end
 
 group :test do
   gem 'simplecov'
+  gem 'pundit-matchers', '~> 1.1.0'
 end
 
 group :development, :test do

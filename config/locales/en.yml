@@ -36,6 +36,8 @@ en:
   log_out_is_successful_notice: 'Log out is successful.'
   log_out_failed_provider_alert: "Log out of your account %{provider} failed."
   please_log_in: 'Please log in.'
+  not_authorized_alert: 'You are not authorized to perform this action.'
+  not_authorized_raise: 'You do not have permission for this action.'
 
   activerecord:
       errors:
@@ -44,3 +46,7 @@ en:
           too_short: 'Short value.'
           confirmation: 'Values do not match.'
           taken: 'Not a unique value.'
+
+  time:
+    formats:
+      long: "%Y-%m-%d %H:%M:%S"

@@ -51,5 +51,12 @@ FactoryGirl.define do
         create(:block_with_two_cards, user: user)
       end
     end
+
+    factory :user_with_admin_privileges do
+      email 'admin@testgmail.com'
+      after(:create) do |user|
+        user.add_role :admin
+      end
+    end
   end
 end

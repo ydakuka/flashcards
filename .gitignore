@@ -24,3 +24,4 @@ public/uploads/
 /vendor
 /.bundle
 /nodes/*.json
+.rake_tasks~
