@@ -21,4 +21,5 @@ Rails.application.configure do
   config.active_record.migration_error = :page_load
   config.assets.debug = true
   config.assets.quiet = true
+  config.i18n.available_locales = [:en, :ru]
 end

@@ -30,6 +30,10 @@ gem 'http_accept_language'
 gem 'routing-filter'
 gem 'rollbar'
 gem 'rainbow', '>= 2.1.0', '< 2.2.0'
+gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
+gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
+gem 'rolify'
+gem 'pundit'
 
 group :development do
   gem 'binding_of_caller'
@@ -40,7 +44,8 @@ group :development do
 end
 
 group :test do
-  gem "simplecov"
+  gem 'simplecov'
+  gem 'pundit-matchers', '~> 1.1.0'
 end
 
 group :development, :test do
@@ -49,7 +54,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'byebug', platform: :mri
   gem 'pry-rails'
-  gem "codeclimate-test-reporter", "~> 1.0.0"
+  gem 'codeclimate-test-reporter', '~> 1.0.0'
 
   %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
     gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'master'

@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  rolify
+
   has_many :cards, dependent: :destroy
   has_many :blocks, dependent: :destroy
   belongs_to :current_block, class_name: 'Block'
@@ -20,6 +22,7 @@ class User < ApplicationRecord
             inclusion: { in: I18n.available_locales.map(&:to_s),
                          message: 'Выберите локаль из выпадающего списка.' }
 
+  scope :admin_user, -> { with_role(:admin) }
 
   def has_linked_github?
     authentications.where(provider: 'github').present?
@@ -36,6 +39,6 @@ class User < ApplicationRecord
   private
 
   def set_default_locale
-    self.locale = I18n.locale.to_s
+    self.locale ||= I18n.locale.to_s
   end
 end
