@@ -1,0 +1,3 @@
+$("#current_image_list").html("<%= escape_javascript(
+  render partial: 'flickr_list_images',
+  object: @list_images, as: :images) %>");

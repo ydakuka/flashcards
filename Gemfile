@@ -34,6 +34,7 @@ gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
 gem 'rolify'
 gem 'pundit'
+gem 'flickraw'
 
 group :development do
   gem 'binding_of_caller'

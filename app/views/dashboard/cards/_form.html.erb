@@ -10,9 +10,11 @@
                 input_html: { class: 'form-control', required: true } %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" id="uploadImage">
     <%= f.input :image, as: :file, label: 'Изображение' %>
     <%= f.input :image_cache, as: :hidden %>
+    <%= f.input :remote_image_url, as: :hidden %>
+    <%= link_to "Загрузить из Flickr", "#", id: "flickrSearchFormLoad", remote: true %>
   </div>
 
   <div class="form-group">
@@ -25,3 +27,12 @@
 
   <%= f.button :submit, 'Сохранить', class: 'btn btn-default' %>
 <% end %>
+
+<div id="flickrSearch">
+  <%= form_tag(flickr_photos_search_cards_path, remote: true, method: :get) do %>
+    <%= label_tag :query, 'Искать:' %>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag 'Найти во Flickr' %>
+  <% end %>
+  <div id="current_image_list"></div>
+</div>
