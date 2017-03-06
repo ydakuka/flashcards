@@ -4,11 +4,7 @@ engines:
     enabled: true
   bundler-audit:
     enabled: true
-  rubocop:
-    enabled: true
-  eslint:
-    enabled: true
-  coffeelint:
+  csslint:
     enabled: true
   duplication:
     enabled: true
@@ -16,30 +12,35 @@ engines:
       languages:
       - ruby
       - javascript
-  markdownlint:
+      - python
+      - php
+  eslint:
     enabled: true
   fixme:
-    enabled: true
+    enabled: false
   rubocop:
     enabled: true
-    checks:
-      Rubocop/Lint/HandleExceptions:
-        enabled: false
 ratings:
   paths:
   - Gemfile.lock
-  - app/**
-  - lib/**
   - "**.erb"
+  - "**.haml"
   - "**.rb"
+  - "**.rhtml"
   - "**.slim"
   - "**.css"
   - "**.coffee"
+  - "**.inc"
   - "**.js"
   - "**.md"
+  - "**.jsx"
   - "**.module"
+  - "**.php"
+  - "**.py"
 exclude_paths:
-  - spec/**/*
-  - "**/vendor/**/*"
-  - config/
-  - db/
+- config/
+- db/
+- spec/
+- test/
+- vendor/
+- app/assets/stylesheets/bootstrap.css

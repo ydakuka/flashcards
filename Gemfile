@@ -35,6 +35,7 @@ gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resour
 gem 'rolify'
 gem 'pundit'
 gem 'flickraw'
+gem 'webmock'
 
 group :development do
   gem 'binding_of_caller'

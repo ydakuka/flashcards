@@ -2,7 +2,7 @@ $(document).ready ->
   $('#flickrSearch').hide()
   $('#flickrSearchFormLoad').on 'click', ->
     $('#uploadImage').hide()
-    $('#flickrSearch').show();
+    $('#flickrSearch').show()
 
   last_element = ""
   $(document).on 'click', '.currentFlickrImage', ->
@@ -10,4 +10,4 @@ $(document).ready ->
     $(this).css 'border': '5px solid #C1E0FF'
     current_url = $(this).attr('src')
     last_element = $(this)
-    $('#card_remote_image_url').val(current_url);
+    $('#card_remote_image_url').val(current_url)

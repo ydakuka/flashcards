@@ -14,8 +14,10 @@ class Card < ApplicationRecord
 
   def self.flickr_search(query)
     require 'flickraw'
-    FlickRaw.api_key = Rails.application.secrets.flickr_api_key
-    FlickRaw.shared_secret = Rails.application.secrets.flickr_api_secret
+    # FlickRaw.api_key = Rails.application.secrets.flickr_api_key
+    # FlickRaw.shared_secret = Rails.application.secrets.flickr_api_secret
+    FlickRaw.api_key = "06ac006eb4673eff77a3d54f41729a6d"
+    FlickRaw.shared_secret = "600ad96cd81494ec"
 
     page = 1
     per_page = 10
@@ -24,13 +26,15 @@ class Card < ApplicationRecord
                          tags: query, privacy_filter: 1
   end
 
-  private
+  class << self
+    private
 
-  def self.pending_cards_notification
-    users = User.non_email
-    users.each do |user|
-      if user.cards.pending.any?
-        CardsMailer.pending_cards_notification(user.email).deliver
+    def pending_cards_notification
+      users = User.non_email
+      users.each do |user|
+        if user.cards.pending.any?
+          CardsMailer.pending_cards_notification(user.email).deliver
+        end
       end
     end
   end

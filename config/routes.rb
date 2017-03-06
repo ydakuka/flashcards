@@ -22,7 +22,6 @@ Rails.application.routes.draw do
     resources :cards do
       collection do
         get 'flickr_photos_search'
-        get 'add_image_to'
       end
     end
 

@@ -18,7 +18,7 @@ ActiveAdmin.register User do
     actions
   end
 
-  form title: 'New User' do |f|
+  form title: 'New User' do
     semantic_errors
     inputs 'Details' do
       input :email
