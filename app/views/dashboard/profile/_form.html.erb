@@ -3,8 +3,8 @@
   <div class="form-group">
     <%= f.input :locale, priority: I18n.default_locale,
                 collection: I18n.available_locales, include_blank: true,
-                prompt: 'Выберите локаль',
-                label: 'Локаль',
+                prompt: t(:select_locale),
+                label: t(:locale),
                 input_html: { class: 'form-control', required: true } %>
   </div>
   <div class="form-group">
@@ -13,13 +13,13 @@
                               autofocus: true } %>
   </div>
   <div class="form-group">
-    <%= f.input :password, as: :password, label: 'Пароль',
+    <%= f.input :password, as: :password, label: t(:password_label),
                 input_html: { class: 'form-control', required: true } %>
   </div>
   <div class="form-group">
     <%= f.input :password_confirmation, as: :password,
-                label: 'Подтверждение пароля',
+                label: t(:password_confirmation_label),
                 input_html: { class: 'form-control', required: true } %>
   </div>
-  <%= f.button :submit, 'Сохранить', class: 'btn btn-default' %>
+  <%= f.button :submit, t(:save), class: 'btn btn-default' %>
 <% end %>

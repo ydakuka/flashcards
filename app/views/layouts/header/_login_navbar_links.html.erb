@@ -2,6 +2,6 @@
             class: 'navbar-link' %> |
 <%= link_to t(:delete_user_label), user_path(current_user),
             method: :delete, class: 'navbar-link',
-            data: { confirm: 'Удалить пользователя?' } %> |
+            data: { confirm: t(:delete_user_label) } %> |
 <%= link_to t(:log_out_label), :logout, method: :post,
             class: 'navbar-link' %>

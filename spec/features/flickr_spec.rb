@@ -9,13 +9,13 @@ feature "User connects Flickr photos to card" do
     visit new_card_path
   end
 
-  it 'should be link Загрузить из Flickr' do
-    expect(page).to have_content('Загрузить из Flickr')
+  it "has link Upload from flickr" do
+    expect(page).to have_content(I18n.t('upload_from_flickr'))
   end
 
-  it 'should be link Найти во Flickr' do
-    click_link 'Загрузить из Flickr'
-    expect(page).to have_button('Найти во Flickr')
+  it "has link 'Find in Flickr'" do
+    click_link (I18n.t('upload_from_flickr'))
+    expect(page).to have_button(I18n.t('find_in_flickr'))
   end
 
   # it 'with word test in search input' do
