@@ -15,6 +15,12 @@ class CardImageUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    "#{model.id}.#{file.extension.downcase}" if original_filename
+    "#{'image' + set_time_now}.#{file.extension.downcase}" if original_filename
+  end
+
+  private
+
+  def set_time_now
+    Time.new.to_s.gsub(/\D/, '')
   end
 end

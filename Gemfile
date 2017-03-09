@@ -51,6 +51,7 @@ group :test do
 end
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'capybara', '~> 2.11'
   gem 'launchy'
   gem 'factory_girl_rails'

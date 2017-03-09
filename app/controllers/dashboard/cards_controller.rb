@@ -35,7 +35,7 @@ class Dashboard::CardsController < Dashboard::BaseController
   end
 
   def flickr_photos_search
-    @list_images = current_user.cards.flickr_search(params[:query])
+    @list_images = Flickr.new(params[:query]).flickr_search
 
     if @list_image.present?
       respond_to do |format|

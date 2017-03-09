@@ -9,21 +9,12 @@ feature "User connects Flickr photos to card" do
     visit new_card_path
   end
 
-  it "has link Upload from flickr" do
+  it "has link 'Upload from flickr'" do
     expect(page).to have_content(I18n.t('upload_from_flickr'))
   end
 
   it "has link 'Find in Flickr'" do
-    click_link (I18n.t('upload_from_flickr'))
+    click_link I18n.t('upload_from_flickr')
     expect(page).to have_button(I18n.t('find_in_flickr'))
   end
-
-  # it 'with word test in search input' do
-  #   click_link 'Загрузить из Flickr'
-  #   fill_in 'query', with: 'cats'
-  #   skip('Неудается обработать click_button')
-  #   # click_button 'Найти во Flickr'
-  #   # stub_request(:any, "api.flickr.com")
-  #   # Net::HTTP.get('api.flickr.com', '/')
-  # end
 end
