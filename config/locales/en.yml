@@ -13,8 +13,8 @@ en:
   sing_up_label: 'Sing up'
   log_in_label: 'Log in'
   sing_in_label: 'Sing in'
-  all_decks_label: 'All deck'
-  add_deck_label: 'Add deck'
+  all_blocks_label: 'All blocks'
+  add_block_label: 'Add block'
   all_cards_label: 'All cards'
   add_card_label: 'Add card'
   user_profile_label: 'User profile'
@@ -38,14 +38,36 @@ en:
   please_log_in: 'Please log in.'
   not_authorized_alert: 'You are not authorized to perform this action.'
   not_authorized_raise: 'You do not have permission for this action.'
+  link_to_cards_notification: 'Go to the site to view the cards'
+  title: 'Title'
+  save: 'Save'
+  edit_block: 'Edit block'
+  edit: 'Edit'
+  delete: 'Delete'
+  delete_the_block: 'Delete the block?'
+  add_the_block: 'Add the block?'
+  image: 'Image'
+  upload_from_flickr: 'Upload from Flickr'
+  choose_a_block: 'Choose a block'
+  blocks: 'Blocks'
+  search: 'Search'
+  find_in_flickr: 'Find in Flickr'
+  edit_card: 'Edit card'
+  revision: 'Revision'
+  delete_the_card: 'Delete the card?'
+  select_locale: 'Select locale'
+  locale: 'Locale'
+  profile_label: 'Profile'
+  delete_image_label: 'Delete image'
 
   activerecord:
-      errors:
-        messages:
-          blank: 'Fill out the field.'
-          too_short: 'Short value.'
-          confirmation: 'Values do not match.'
-          taken: 'Not a unique value.'
+    errors:
+      messages:
+        blank: 'Fill out the field.'
+        too_short: 'Short value.'
+        confirmation: 'Values do not match.'
+        taken: 'Not a unique value.'
+        invalid: 'Wrong format.'
 
   time:
     formats:

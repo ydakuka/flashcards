@@ -1,0 +1,5 @@
+<% images.each do |image| %>
+  <% url = "http://farm#{image["farm"]}.staticflickr.com/#{image["server"]}/#{image["id"]}_#{image["secret"]}.jpg" %>
+  <% alt = "#{image["title"]}" %>
+  <%= link_to(image_tag(url, size: "200x200", alt: alt, class: 'currentFlickrImage'), '#', remote: true) %>
+<% end %>

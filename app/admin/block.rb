@@ -15,7 +15,7 @@ ActiveAdmin.register Block do
     actions
   end
 
-  form title: 'New Block' do |f|
+  form title: 'New Block' do
     semantic_errors
     inputs 'Details' do
       input :title

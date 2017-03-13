@@ -1,27 +1,38 @@
 <%= simple_form_for card do |f| %>
   <div class="form-group">
-    <%= f.input :original_text,  as: :text, label: 'Оригинал',
+    <%= f.input :original_text,  as: :text, label: t(:original_text_label),
                 input_html: { class: 'form-control', required: true,
                               autofocus: true } %>
   </div>
 
   <div class="form-group">
-    <%= f.input :translated_text,  as: :text, label: 'Перевод',
+    <%= f.input :translated_text,  as: :text, label: t(:translated_text_label),
                 input_html: { class: 'form-control', required: true } %>
   </div>
 
-  <div class="form-group">
-    <%= f.input :image, as: :file, label: 'Изображение' %>
+  <div class="form-group" id="uploadImage">
+    <%= f.input :image, as: :file, label: t(:image) %>
     <%= f.input :image_cache, as: :hidden %>
+    <%= f.input :remote_image_url, as: :hidden %>
+    <%= link_to t(:upload_from_flickr), "#", id: "flickrSearchFormLoad", remote: true %>
   </div>
 
   <div class="form-group">
     <%= f.input :block_id, collection: current_user.blocks.all.order('title'),
-                      prompt: 'Выберите колоду', label: 'Колоды',
+                      prompt: t(:choose_a_block), label: t(:blocks),
                       input_html: { class: 'form-control', required: true } %>
   </div>
 
   <%= render partial: "shared/card_image", locals: { class_column: "col-xs-6 col-md-4", card: card } %>
 
-  <%= f.button :submit, 'Сохранить', class: 'btn btn-default' %>
+  <%= f.button :submit, t(:save), class: 'btn btn-default' %>
 <% end %>
+
+<div id="flickrSearch">
+  <%= form_tag(flickr_photos_search_cards_path, remote: true, method: :get) do %>
+    <%= label_tag :query, t(:search) %>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag t(:find_in_flickr) %>
+  <% end %>
+  <div id="current_image_list"></div>
+</div>
