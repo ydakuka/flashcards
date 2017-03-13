@@ -34,6 +34,16 @@ class Dashboard::CardsController < Dashboard::BaseController
     redirect_to cards_url, notice: 'Card was successfully destroyed.'
   end
 
+  def flickr_photos_search
+    @list_images = Flickr.new(params[:query]).flickr_search
+
+    if @list_image.present?
+      respond_to do |format|
+        format.js {render layout: false}
+      end
+    end
+  end
+
   private
 
   def set_card
@@ -42,6 +52,7 @@ class Dashboard::CardsController < Dashboard::BaseController
 
   def card_params
     params.require(:card).permit(:original_text, :translated_text, :review_date,
-                                 :image, :image_cache, :remove_image, :block_id)
+                                 :image, :image_cache, :remove_image, :block_id,
+                                 :remote_image_url)
   end
 end

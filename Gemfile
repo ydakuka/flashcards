@@ -34,6 +34,9 @@ gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
 gem 'rolify'
 gem 'pundit'
+gem 'flickraw'
+gem 'webmock'
+gem 'api_flashcards', path: '../api_flashcards'
 
 group :development do
   gem 'binding_of_caller'
@@ -49,6 +52,7 @@ group :test do
 end
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'capybara', '~> 2.11'
   gem 'launchy'
   gem 'factory_girl_rails'
