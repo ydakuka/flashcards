@@ -1,5 +1,7 @@
 class Dashboard::FillingsController < Dashboard::BaseController
-  def index
+  def show
+    filling_result = FillingResult.where(job_id: params[:id])
+    @cards         = Card.where(id: filling_result)
   end
 
   def new
@@ -8,12 +10,14 @@ class Dashboard::FillingsController < Dashboard::BaseController
 
   def create
     @filling = current_user.fillings.build(filling_params)
-    if @filling.save
-      RemoteFillingJob.perform_later @filling.id, current_user.id
-      redirect_to cards_path
-    else
-      render :new
-    end
+    respond_to do |format| 
+      if @filling.save 
+        RemoteFillingJob.perform_later @filling.id, current_user.id
+        format.html { redirect_to @filling, notice: 'Filling was successfully created.' }    
+      else 
+        format.html { render :new } 
+      end 
+    end 
   end
 
   private

@@ -63,6 +63,7 @@ en:
   enter_url_label: 'Enter the site URL'
   original_selector_label: 'Original selector'
   add_filling_label: 'Add words remotely'
+  total_words_label: 'Total words added'
 
   activerecord:
     errors:

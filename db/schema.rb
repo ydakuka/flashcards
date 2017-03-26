@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326085025) do
+ActiveRecord::Schema.define(version: 20170326165351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,14 @@ ActiveRecord::Schema.define(version: 20170326085025) do
     t.float    "efactor",         default: 2.5, null: false
     t.integer  "attempt",         default: 1,   null: false
     t.integer  "quality",         default: 5,   null: false
+  end
+
+  create_table "filling_results", force: :cascade do |t|
+    t.integer  "job_id"
+    t.integer  "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_filling_results_on_card_id", using: :btree
   end
 
   create_table "fillings", force: :cascade do |t|
@@ -93,6 +101,7 @@ ActiveRecord::Schema.define(version: 20170326085025) do
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
   end
 
+  add_foreign_key "filling_results", "cards"
   add_foreign_key "fillings", "blocks"
   add_foreign_key "fillings", "users"
 end

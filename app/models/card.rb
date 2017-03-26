@@ -4,6 +4,7 @@ class Card < ApplicationRecord
 
   mount_uploader :image, CardImageUploader
 
+  has_many :filling_results, dependent: :destroy
   belongs_to :block
   validates :user_id,  presence: { message: 'Ошибка ассоциации.' }
   validates :block_id, presence: { message: 'Выберите колоду из выпадающего списка.' }

@@ -29,7 +29,11 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :fillings
+    resources :fillings do
+      collection do
+        get 'result'
+      end
+    end
 
     resources :blocks do
       member do
