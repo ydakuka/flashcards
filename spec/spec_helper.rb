@@ -61,8 +61,14 @@ RSpec.configure do |config|
       .to_return(status: 200,
                  body: File.read(Rails.root.join('spec', 'support', 'fixtures', file_name)),
                  headers: {})
-  end
 
+    learnathome = "learnathome_table.html"
+    stub_request(:get, "https://www.learnathome.ru/blog/100-beautiful-words").
+      with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+      to_return(status: 200,
+                 body: File.new(Rails.root.join('spec', 'support', 'fixtures', learnathome)),
+                 headers: {})
+  end
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin

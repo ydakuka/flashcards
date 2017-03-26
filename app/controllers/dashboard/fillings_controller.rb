@@ -23,6 +23,7 @@ class Dashboard::FillingsController < Dashboard::BaseController
   private
 
   def filling_params
-    params.require(:filling).permit(:original_selector, :translated_selector, :block_id, :url)
+    params.require(:filling).permit(:original_selector, :translated_selector, 
+                                    :block_id, :user_id, :url)
   end
 end

@@ -73,6 +73,7 @@ ru:
         confirmation: 'Значения не совпадают.'
         taken: 'Не уникальное значение.'
         invalid: 'Не верный формат.'
+        record_invalid: "Ошибка валидации: %{errors}"
 
   time:
     formats:

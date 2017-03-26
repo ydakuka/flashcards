@@ -73,6 +73,7 @@ en:
         confirmation: 'Values do not match.'
         taken: 'Not a unique value.'
         invalid: 'Wrong format.'
+        record_invalid: "Validation failed: %{errors}"
 
   time:
     formats:
