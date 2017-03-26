@@ -2,6 +2,7 @@ class User < ApplicationRecord
   rolify
 
   has_many :cards, dependent: :destroy
+  has_many :fillings, dependent: :destroy
   has_many :blocks, dependent: :destroy
   belongs_to :current_block, class_name: 'Block'
   before_create :set_default_locale

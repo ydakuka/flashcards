@@ -36,7 +36,7 @@ gem 'rolify'
 gem 'pundit'
 gem 'flickraw'
 gem 'webmock'
-gem 'api_flashcards', path: '../api_flashcards'
+gem 'api_flashcards', git: 'https://github.com/ydakuka/api_flashcards'
 
 group :development do
   gem 'binding_of_caller'

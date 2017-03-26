@@ -26,6 +26,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :fillings
+
     resources :blocks do
       member do
         put 'set_as_current'
