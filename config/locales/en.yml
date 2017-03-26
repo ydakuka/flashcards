@@ -59,6 +59,10 @@ en:
   locale: 'Locale'
   profile_label: 'Profile'
   delete_image_label: 'Delete image'
+  translated_selector_label: 'Translation selector'
+  enter_url_label: 'Enter the site URL'
+  original_selector_label: 'Original selector'
+  add_filling_label: 'Add words remotely'
 
   activerecord:
     errors:

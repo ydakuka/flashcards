@@ -1,6 +1,6 @@
 <%= simple_form_for filling do |f| %>
   <div class="form-group">
-    <%= f.input :url,  as: :text, label: "Введите URL сайта",
+    <%= f.input :url,  as: :text, label: t(:enter_url_label),
                 input_html: { class: 'form-control', required: true,
                               autofocus: true } %>
   </div>

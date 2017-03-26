@@ -59,6 +59,10 @@ ru:
   locale: 'Локаль'
   profile_label: 'Профиль'
   delete_image_label: 'Удалить изображение'
+  original_selector_label: 'Оригинал селектора'
+  translated_selector_label: 'Перевод селектора'
+  enter_url_label: 'Введите URL сайта'
+  add_filling_label: 'Загрузить слова удаллено'
 
   activerecord:
     errors:

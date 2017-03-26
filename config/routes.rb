@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     get 'oauth/:provider' => 'oauths#oauth', as: :auth_at_provider
   end
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
   scope module: 'dashboard' do
     resources :user_sessions, only: :destroy
     resources :users, only: :destroy
