@@ -19,7 +19,7 @@ class Card < ApplicationRecord
     def pending_cards_notification
       pending_users = User.non_email.joins(:cards).pending
       emails        = pending_users.pluck(:email)
-      CardsMailer.pending_cards_notification(emails).deliver
+      CardsMailerJob.perform_later(emails)
     end
   end
 end

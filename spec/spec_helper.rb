@@ -52,14 +52,14 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    file_name = 'flickr_photo_search_output.json'
+    flickr_search = 'flickr_photo_search_output.json'
     stub_request(:get, "https://api.flickr.com/services/rest/?method=flickr.photos.search")
       .with(headers: {'Accept'=>'*/*',
                       'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
                       'Host'=>'api.flickr.com',
                       'User-Agent'=>'Ruby'})
       .to_return(status: 200,
-                 body: File.read(Rails.root.join('spec', 'support', 'fixtures', file_name)),
+                 body: File.read(Rails.root.join('spec', 'support', 'fixtures', flickr_search)),
                  headers: {})
 
     learnathome = "learnathome_table.html"

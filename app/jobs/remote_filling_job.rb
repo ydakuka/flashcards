@@ -11,6 +11,6 @@ class RemoteFillingJob < ApplicationJob
                         user_id: user_id, block_id: filling.block_id)
       FillingResult.create(job_id: filling.id, card_id: card.id)
     end
-    count = FillingResult.count
+    FillingResult.count
   end
 end
