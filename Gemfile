@@ -38,6 +38,9 @@ gem 'flickraw'
 gem 'webmock'
 gem 'api_flashcards', git: 'https://github.com/ydakuka/api_flashcards'
 gem 'sidekiq'
+gem 'redis-store'
+gem 'redis-rails'
+gem 'redis-rack-cache'
 
 group :development do
   gem 'binding_of_caller'
