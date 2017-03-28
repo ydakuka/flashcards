@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   filter :locale
 
   root 'main#index'
+  mount ApiFlashcards::Engine => "/api_flashcards"
 
   scope module: 'home' do
     resources :user_sessions, only: [:new, :create]
@@ -14,6 +15,9 @@ Rails.application.routes.draw do
     get 'oauth/:provider' => 'oauths#oauth', as: :auth_at_provider
   end
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
   scope module: 'dashboard' do
     resources :user_sessions, only: :destroy
     resources :users, only: :destroy
@@ -22,6 +26,12 @@ Rails.application.routes.draw do
     resources :cards do
       collection do
         get 'flickr_photos_search'
+      end
+    end
+
+    resources :fillings do
+      collection do
+        get 'result'
       end
     end
 

@@ -1,5 +1,6 @@
 class Block < ApplicationRecord
   has_many :cards, dependent: :destroy
+  has_many :fillings, dependent: :destroy
   belongs_to :user
 
   validates :title, presence: { message: 'Необходимо заполнить поле.' }

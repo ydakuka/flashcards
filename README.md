@@ -1,6 +1,8 @@
 [![Build Status](https://travis-ci.org/ydakuka/flashcards.svg?branch=master)](https://travis-ci.org/ydakuka/flashcards)
 
-[![Code Climate](https://codeclimate.com/repos/551d5933695680514c00019c/badges/20539730e3e119e4d337/gpa.svg)](https://codeclimate.com/repos/551d5933695680514c00019c/feed)
+[![Code Climate](https://codeclimate.com/github/ydakuka/flashcards/badges/gpa.svg)](https://codeclimate.com/github/ydakuka/flashcards)
+
+[![Test Coverage](https://codeclimate.com/github/ydakuka/flashcards/badges/coverage.svg)](https://codeclimate.com/github/ydakuka/flashcards/coverage)
 
 To start this application do following steps:
 * `bundle`

@@ -1,0 +1,25 @@
+<%= simple_form_for filling do |f| %>
+  <div class="form-group">
+    <%= f.input :url,  as: :text, label: t(:enter_url_label),
+                input_html: { class: 'form-control', required: true,
+                              autofocus: true } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :original_selector,  as: :text, label: t(:original_selector_label),
+                input_html: { class: 'form-control', required: true } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :translated_selector,  as: :text, label: t(:translated_selector_label),
+                input_html: { class: 'form-control', required: true } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :block_id, collection: current_user.blocks.all.order('title'),
+                      prompt: t(:choose_a_block), label: t(:blocks),
+                      input_html: { class: 'form-control', required: true } %>
+  </div>
+
+  <%= f.button :submit, t(:save), class: 'btn btn-default' %>
+<% end %>

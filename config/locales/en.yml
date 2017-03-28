@@ -59,6 +59,11 @@ en:
   locale: 'Locale'
   profile_label: 'Profile'
   delete_image_label: 'Delete image'
+  translated_selector_label: 'Translation selector'
+  enter_url_label: 'Enter the site URL'
+  original_selector_label: 'Original selector'
+  add_filling_label: 'Add words remotely'
+  total_words_label: 'Total words added'
 
   activerecord:
     errors:
@@ -68,6 +73,7 @@ en:
         confirmation: 'Values do not match.'
         taken: 'Not a unique value.'
         invalid: 'Wrong format.'
+        record_invalid: "Validation failed: %{errors}"
 
   time:
     formats:
