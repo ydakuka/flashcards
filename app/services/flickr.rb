@@ -17,7 +17,7 @@ class Flickr
   end
 
   def flickr_search
-    Rails.cache.fetch("#{query}/#{per_page}", expires_in: 1.hours) do
+    Rails.cache.fetch("flickr_search/#{query}", expires_in: 6.hours) do
       flickr.photos.search page: page, per_page: per_page, text: query,
                            tags: query, privacy_filter: privacy_filter
     end

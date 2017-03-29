@@ -26,3 +26,4 @@ public/uploads/
 /nodes/*.json
 .rake_tasks~
 .env
+dump.rdb

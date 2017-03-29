@@ -3,10 +3,14 @@ Rails.application.configure do
   config.eager_load = false
   config.consider_all_requests_local = true
 
-  if Rails.root.join('tmp/caching-dev.txt').exist?
+  if ENV['REDIS_URL']
     config.action_controller.perform_caching = true
     config.action_mailer.perform_caching = true
-    config.cache_store = :memory_store
+    config.cache_store = :redis_store, ENV['REDIS_URL']
+    config.action_dispatch.rack_cache = {
+      metastore:   ENV['REDIS_URL'] + "/metastore",
+      entitystore: ENV['REDIS_URL'] + "/entitystore"
+    }
     config.public_file_server.headers = {
       'Cache-Control' => 'public, max-age=172800'
     } else
