@@ -13,6 +13,7 @@ class Dashboard::TrainerController < Dashboard::BaseController
   def review_card
     @card = current_user.cards.find(params[:card_id])
     check_result(@card)
+    ahoy.track "Reviewed card", card_id: @card.id
   end
 
   private

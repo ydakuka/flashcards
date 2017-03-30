@@ -41,6 +41,7 @@ gem 'sidekiq'
 gem 'redis-store'
 gem 'redis-rails'
 gem 'redis-rack-cache'
+gem 'ahoy_matey'
 
 group :development do
   gem 'binding_of_caller'
