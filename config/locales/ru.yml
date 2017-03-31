@@ -62,7 +62,7 @@ ru:
   original_selector_label: 'Оригинал селектора'
   translated_selector_label: 'Перевод селектора'
   enter_url_label: 'Введите URL сайта'
-  add_filling_label: 'Загрузить слова удаллено'
+  add_filling_label: 'Загрузить слова удаленно'
   total_words_label: 'Всего добавлено слов'
 
   activerecord:
