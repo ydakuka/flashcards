@@ -11,4 +11,4 @@ $(document).ready ->
     current_url = $(this).attr('src')
     last_element = $(this)
     $('#card_remote_image_url').val(current_url)
-    ahoy.track 'Clicked on flickr image, before save'
+    ahoy.track 'flickr_image:uploaded'

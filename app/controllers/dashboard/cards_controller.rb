@@ -15,7 +15,7 @@ class Dashboard::CardsController < Dashboard::BaseController
   def create
     @card = current_user.cards.build(card_params)
     if @card.save
-      ahoy.track "Added card", card_id: @card.id
+      ahoy.track "card:added", card_id: @card.id
       redirect_to cards_path
     else
       render :new

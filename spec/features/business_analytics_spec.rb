@@ -6,7 +6,7 @@ feature "using ahoy_mater gem" do
     it 'when registred is true' do
       visit root_path
       register('test@test.com', '123456', '123456', I18n.t('sing_up_label'))
-      expect(Ahoy::Event.last.name).to eq "User registered"
+      expect(Ahoy::Event.last.name).to eq "user:registered"
     end
   end
 
@@ -27,7 +27,7 @@ feature "using ahoy_mater gem" do
       end
 
       it "Ahoy::Event has right name" do
-        expect(Ahoy::Event.first.name).to eq "Logged with sorcery"
+        expect(Ahoy::Event.first.name).to eq "sorcery:logged"
       end
     end
 
@@ -43,7 +43,7 @@ feature "using ahoy_mater gem" do
           click_button I18n.t('check_card_button')
         end
 
-        expect(Ahoy::Event.offset(1).last.name).to eq "Reviewed card"
+        expect(Ahoy::Event.offset(1).last.name).to eq "card:reviewed"
         expect(Ahoy::Event.last.name).to eq "Viewed trainer#index"
       end
     end
@@ -64,7 +64,7 @@ feature "using ahoy_mater gem" do
 
         expect(Ahoy::Event.offset(3).last.name).to eq "Viewed cards#new"
         expect(Ahoy::Event.offset(2).last.name).to eq "Viewed cards#create"
-        expect(Ahoy::Event.offset(1).last.name).to eq "Added card"
+        expect(Ahoy::Event.offset(1).last.name).to eq "card:added"
         expect(Ahoy::Event.last.name).to eq "Viewed cards#index"
       end
 
@@ -89,7 +89,7 @@ feature "using ahoy_mater gem" do
       #   expect(Ahoy::Event.offset(4).last.name).to eq "Viewed cards#new"
       #   expect(Ahoy::Event.offset(3).last.name).to eq "Viewed cards#flickr_photos_search"
       #   expect(Ahoy::Event.offset(2).last.name).to eq "Viewed cards#create"
-      #   expect(Ahoy::Event.offset(1).last.name).to eq "Added card"
+      #   expect(Ahoy::Event.offset(1).last.name).to eq "card:added"
       #   expect(Ahoy::Event.last.name).to eq "Viewed cards#index"
       # end
     end

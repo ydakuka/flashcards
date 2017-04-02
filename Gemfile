@@ -42,6 +42,8 @@ gem 'redis-store'
 gem 'redis-rails'
 gem 'redis-rack-cache'
 gem 'ahoy_matey'
+gem 'groupdate'
+gem 'chartkick'
 
 group :development do
   gem 'binding_of_caller'

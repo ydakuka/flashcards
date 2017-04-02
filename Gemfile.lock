@@ -166,6 +166,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    chartkick (2.2.3)
     chronic (0.10.2)
     codeclimate-test-reporter (1.0.5)
       simplecov
@@ -225,6 +226,8 @@ GEM
     geocoder (1.4.3)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    groupdate (3.2.0)
+      activesupport (>= 3)
     has_scope (0.7.0)
       actionpack (>= 4.1, < 5.1)
       activesupport (>= 4.1, < 5.1)
@@ -470,6 +473,7 @@ DEPENDENCIES
   capybara
   capybara-webkit
   carrierwave
+  chartkick
   codeclimate-test-reporter (~> 1.0.0)
   coffee-rails (~> 4.2)
   database_cleaner
@@ -479,6 +483,7 @@ DEPENDENCIES
   figaro
   flickraw
   fog-aws
+  groupdate
   http_accept_language
   inherited_resources!
   jbuilder (~> 2.5)
