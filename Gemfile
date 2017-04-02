@@ -41,6 +41,9 @@ gem 'sidekiq'
 gem 'redis-store'
 gem 'redis-rails'
 gem 'redis-rack-cache'
+gem 'ahoy_matey'
+gem 'groupdate'
+gem 'chartkick'
 
 group :development do
   gem 'binding_of_caller'
@@ -53,11 +56,13 @@ end
 group :test do
   gem 'simplecov'
   gem 'pundit-matchers', '~> 1.1.0'
+  gem 'capybara-webkit'
+  gem 'database_cleaner'
 end
 
 group :development, :test do
   gem 'dotenv-rails'
-  gem 'capybara', '~> 2.11'
+  gem 'capybara'
   gem 'launchy'
   gem 'factory_girl_rails'
   gem 'byebug', platform: :mri

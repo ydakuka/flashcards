@@ -8,6 +8,8 @@ class User < ApplicationRecord
   before_create :set_default_locale
   before_validation :set_default_locale, on: :create
   has_many :authentications, dependent: :destroy
+  has_many :visits, dependent: :destroy
+  has_many :ahoy_events, class_name: "Ahoy::Event", dependent: :destroy
   accepts_nested_attributes_for :authentications
 
   authenticates_with_sorcery! do |config|

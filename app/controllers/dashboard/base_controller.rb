@@ -1,6 +1,15 @@
 class Dashboard::BaseController < ApplicationController
-  before_action :require_login
+  before_action :require_login, :track_action
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
+
+  protected
+
+  def track_action
+    if current_user
+      ahoy.authenticate(current_user)
+      ahoy.track "Viewed #{controller_name}##{action_name}", user_id: current_user.id
+    end
+  end
 
   private
 
